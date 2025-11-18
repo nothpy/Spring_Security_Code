@@ -12,12 +12,15 @@ import com.basicAuthentication.entity.User;
 public class UserDetailsImpl implements UserDetails{
 
 	private User user;
+	
 	public UserDetailsImpl(User user) {
 		this.user = user;
 	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// is function ke under hum role return kar rahe hai 
+		// 
 		HashSet<SimpleGrantedAuthority> hs = new HashSet<>();
 		hs.add(new SimpleGrantedAuthority(user.getRole()));
 		return hs;
@@ -30,32 +33,31 @@ public class UserDetailsImpl implements UserDetails{
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
+		return user.getUsername();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 }
